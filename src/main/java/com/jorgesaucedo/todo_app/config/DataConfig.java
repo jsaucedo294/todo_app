@@ -6,51 +6,56 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
+
 
 import java.util.Properties;
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 @Configuration
 @EnableJpaRepositories(basePackages = "com.jorgesaucedo.todo_app.dao")
 @PropertySource("application.properties")
 public class DataConfig {
-  @Autowired
-  Environment env;
+    @Autowired
+    Environment env;
 
-  @Bean
-  public LocalContainerEntityManagerFactoryBean entityManagerFactory(){
-    LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-    HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
 
-    factory.setDataSource(dataSource());
-    factory.setJpaVendorAdapter(vendorAdapter);
-    factory.setPackagesToScan(env.getProperty("todo_app.entity.package"));
-    factory.setJpaProperties(getHibernateProperties());
+        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 
-    return factory;
-  }
+        factory.setDataSource(dataSource());
+        factory.setJpaVendorAdapter(vendorAdapter);
+        factory.setPackagesToScan(env.getProperty("todo_app.entity.package"));
+        factory.setJpaProperties(getHibernateProperties());
+        return factory;
+    }
 
-  private DataSource dataSource() {
-    BasicDataSource ds = new BasicDataSource();
-    ds.setDriverClassName(env.getProperty("todo_app.db.driver"));
-    ds.setUrl(env.getProperty("todo_app.db.url"));
+    @Bean
+    public DataSource dataSource() {
+        BasicDataSource ds = new BasicDataSource();
+        ds.setDriverClassName(env.getProperty("todo_app.db.driver"));
+        ds.setUrl(env.getProperty("todo_app.db.url"));
+        ds.setUsername(env.getProperty("todo_app.db.username"));
+        ds.setPassword(env.getProperty("todo_app.db.password"));
+        return ds;
+    }
 
-    return ds;
-  }
-
-  private Properties getHibernateProperties() {
-    Properties properties = new Properties();
-    properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
-    properties.put("hibernate.implicit_naming_strategy", env.getProperty("hibernate.implicit_naming_strategy"));
-    properties.put("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
-    properties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
-    properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-
-    return properties;
-  }
-
-
+    @Bean
+    public Properties getHibernateProperties() {
+        Properties properties = new Properties();
+        properties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
+        properties.setProperty("hibernate.implicit_naming_strategy", env.getProperty("hibernate.implicit_naming_strategy"));
+        properties.setProperty("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
+        properties.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+        properties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+        return properties;
+    }
 }

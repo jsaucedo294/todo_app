@@ -1,5 +1,5 @@
-- Insert tasks
-insert into task (complete,description) values (true,'Code Task entity');
-insert into task (complete,description) values (false,'Discuss users and roles');
-insert into task (complete,description) values (false,'Enable Spring Security');
-insert into task (complete,description) values (false,'Test application');
+-- Insert tasks
+insert into task (complete,description, createAt) values (true,'Finish MVP todo_app',TO_DATE('12/17/2018', 'MM/DD/YYYY'));
+insert into task (complete,description, createAt) values (false,'Discuss project with teachers', TO_DATE('12/17/2018', 'MM/DD/YYYY'));
+insert into task (complete,description, createAt) values (false,'Finish Code Louisville Java class', TO_DATE('12/17/2018', 'MM/DD/YYYY'));
+insert into task (complete,description, createAt) values (false,'Celebrate', TO_DATE('12/17/2018', 'MM/DD/YYYY'));

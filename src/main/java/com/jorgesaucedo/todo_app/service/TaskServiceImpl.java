@@ -7,28 +7,34 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TaskServiceImpl implements TaskService {
-  @Autowired
-  private TaskDao taskDao;
+    @Autowired
+    private TaskDao taskDao;
 
-  @Override
-  public Iterable<Task> findAll() {
-    return taskDao.findAll();
-  }
+    @Override
+    public Iterable<Task> findAll() {
+        return taskDao.findAll();
+    }
 
-  @Override
-  public Task findOne(Long id) {
-    return taskDao.findOne(id);
-  }
+    @Override
+    public Task findOne(Long id) {
+        return taskDao.findById(id).orElse(null);
+    }
 
-  @Override
-  public void toggleComplete(Long id) {
-    Task task = taskDao.findOne(id);
-    task.setComplete(!task.isComplete());
-    taskDao.save(task);
-  }
+    @Override
+    public void toggleComplete(Long id) {
+        Task task = taskDao.findById(id).orElse(null);
+        task.setComplete(!task.isComplete());
 
-  @Override
-  public void save(Task task) {
-    taskDao.save(task);
-  }
+        taskDao.save(task);
+    }
+
+    @Override
+    public void deleteById(Task task) {
+        taskDao.delete(task);
+    }
+
+    @Override
+    public void save(Task task) {
+        taskDao.save(task);
+    }
 }

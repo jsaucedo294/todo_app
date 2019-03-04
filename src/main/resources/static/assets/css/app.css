@@ -1,0 +1,126 @@
+@import url(https://fonts.googleapis.com/css?family=Varela+Round);
+
+* {
+    font-family: 'varela round';
+}
+
+.inline {
+    display: inline-block;
+}
+
+nav {
+  background-color: #333333;
+  height: 150px;
+}
+.nav-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-wrapper .logo {
+    height: 90px;
+    max-width : 100%;
+}
+.nav-wrapper h3 {
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+ }
+.nav-wrapper h3 span {
+  font-size: 18px;
+  margin: 0;
+}
+
+ul li {
+    margin-bottom: 6px;
+}
+
+[type="checkbox"]+label::before {
+    border-color: #dad7de;
+    border-width: 1px;
+    width: 36px;
+    height: 36px;
+    transition: none;
+    -webkit-transition: none;
+}
+
+[type="checkbox"]+label {
+    font-size: 2rem;
+    line-height: 3rem;
+    height: 3rem;
+    padding-left: 46px;
+    font-weight: 200;
+    color: #555;
+}
+
+ul li a {
+  margin-left: 10px;
+}
+.red-x {
+  width: 15px;
+  height: 15px;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.todo-item > .task-description:hover ~ a > img.red-x, a > img.red-x:hover {
+  opacity: 1;
+}
+
+[type="checkbox"]:checked+label {
+    color: #d0d0d0;
+}
+
+[type="checkbox"]:checked+label::before {
+    top: -4px;
+    left: -7px;
+    width: 20px;
+    height: 34px;
+    border-bottom: 3px solid #5fcf80;
+    border-right: 3px solid #5fcf80;
+}
+
+.new-item label {
+    position: relative;
+    font-size: 2rem;
+    line-height: 3rem;
+    height: 3rem;
+    padding-left: 46px;
+    font-weight: 200;
+    color: #555;
+}
+
+.new-item label::before {
+    position:absolute;
+    top: -4px;
+    left: 2px;
+    display: inline-block;
+    content: 'add';
+    font-family: 'material icons';
+    width: 36px;
+    height: 36px;
+    font-size: 2rem;
+    color: rgba(131,140,199,0.2);
+    direction: ltr;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+.new-item input[type=text], .new-item input[type=text]:focus {
+    border: none;
+    box-shadow: none;
+    font-size: 2rem;
+    color: rgba(131,140,199,1);
+}
+
+.new-item input[type=text]::-webkit-input-placeholder {
+    color: rgba(131,140,199,0.4);
+}

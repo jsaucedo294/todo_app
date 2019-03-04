@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Todo App</title>
-</head>
+<head th:replace="layout :: head"></head>
 <body>
+    <header th:replace="layout :: header"></header>
     <div class="container">
         <ul>
-            <li>
-                <form action="" method="post">
-                    <input type="hidden" name="id" value="hello world">
-                    <input type="checkbox" id="" checked="">
-                    <label for="" text=""></label>
+            <li th:each="task : ${tasks}">
+                <form method="post" th:action="@{/mark}" class="inline todo-item">
+                    <input type="hidden" name="id" th:value="${task.id}"/>
+                    <input type="checkbox" th:id="|checked_${task.id}|" th:checked="${task.complete}"/>
+                    <label class="task-description" th:for="|checked_${task.id}|" th:text="${task.description}"></label>
+                    <label th:text="${task.dueDate}"></label>
+                    <a href="#" th:href="@{/delete/} + ${task.id}"><img class="red-x" th:src="@{/assets/images/redX.png}" alt="delete"></a>
                 </form>
             </li>
             <li>
-                <form action="post" object="" action="" class>
-                    <label><input type="text" field="" placeholder="New task" autocomplete="off"></label>
+                <form method="post" th:object="${newTask}" th:action="@{/tasks}" class="inline new-item">
+                    <label><input type="text" th:field="*{description}" placeholder="New task" autocomplete="off"/></label>
+                    <input type="date" name="dueDate" th:value="${#dates.format(dueDate, 'yyyy-mm-dd')}" />
                 </form>
             </li>
         </ul>
     </div>
+    <div th:replace="layout :: scripts"></div>
 </body>
 </html>
