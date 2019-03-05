@@ -16,8 +16,11 @@
             </li>
             <li>
                 <form method="post" th:object="${newTask}" th:action="@{/tasks}" class="inline new-item">
-                    <label><input type="text" th:field="*{description}" placeholder="New task" autocomplete="off"/></label>
-                    <input type="date" name="dueDate" th:value="${#dates.format(dueDate, 'yyyy-mm-dd')}" />
+                    <label>
+                        <input type="text" th:field="*{description}" placeholder="New task" autocomplete="off"/>
+                        <input type="date" name="dueDate" th:value="${#dates.format(dueDate, 'yyyy-mm-dd')}" />
+                    </label>
+
                 </form>
             </li>
         </ul>
