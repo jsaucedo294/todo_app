@@ -73,6 +73,9 @@ ul li a {
 .todo-item > .task-description:hover ~ a > img.red-x, a > img.red-x:hover {
   opacity: 1;
 }
+.todo-item > .due-date:hover + a > img.red-x {
+  opacity: 1;
+}
 
 
 [type="checkbox"]:checked+label {
