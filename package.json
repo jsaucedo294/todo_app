@@ -1,0 +1,26 @@
+{
+  "name": "codelouisville-todo-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsaucedo294/todo_app.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jsaucedo294/todo_app/issues"
+  },
+  "homepage": "https://github.com/jsaucedo294/todo_app#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0"
+  },
+  "dependencies": {
+    "bootstrap-sass": "^3.4.1",
+    "gulp-sass": "^4.0.2"
+  }
+}

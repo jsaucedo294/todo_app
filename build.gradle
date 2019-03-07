@@ -4,12 +4,19 @@ buildscript {
     }
     repositories {
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("com.moowork.gradle:gradle-node-plugin:1.2.0")
+        classpath("com.moowork.gradle:gradle-gulp-plugin:0.13")
     }
 }
 
+apply plugin: 'com.moowork.node'
+apply plugin: 'com.moowork.gulp'
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: "org.springframework.boot"
@@ -44,3 +51,7 @@ dependencies {
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 
+gulp_build.dependsOn 'installGulp'
+gulp_build.dependsOn 'npmInstall'
+
+bootRun.dependsOn gulp_build
