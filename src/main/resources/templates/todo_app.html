@@ -11,7 +11,7 @@
                     <input type="checkbox" th:id="|checked_${task.id}|" th:checked="${task.complete}"/>
                     <label class="task-description" th:for="|checked_${task.id}|" th:text="${task.description}"></label>
                     <label th:if="${task.dueDate}" class="due-date" style="font-size: 18px">
-                        ~ <small th:text="${task.dueDate}"></small>
+                        ~ <small th:text="${#dates.format(task.dueDate, 'MM-DD-YYYY')}"></small>
                     </label>
                     <a href="#" th:href="@{/delete/} + ${task.id}"><img class="red-x" th:src="@{/assets/images/redX.png}" alt="delete"></a>
                 </form>
@@ -25,10 +25,10 @@
                             </label>
                         </div>
                         <div class="col-md-3">
-                            <input type="date" name="dueDate" th:value="${#dates.format(dueDate, 'yyyy-mm-dd')}" />
+                            <input type="date" name="dueDate" th:value="*{dueDate}" />
                         </div>
                         <div class="col-md-2">
-                            <input class="btn btn-primary" type="submit"></input>
+                            <input class="btn btn-primary" type="submit" />
                         </div>
                     </div>
                 </form>
