@@ -1,5 +1,6 @@
 package com.jorgesaucedo.todo_app.model;
 
+import com.sun.istack.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -27,7 +28,7 @@ public class Task {
     private Date createAt;
 
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat ( pattern="yyyy-mm-dd")
+    @DateTimeFormat ( pattern="yyyy-MM-dd")
     @Column(name = "dueDate")
     private Date dueDate;
 

@@ -80,6 +80,7 @@ ul li a {
 
 [type="checkbox"]:checked+label {
     color: #d0d0d0;
+    text-decoration: line-through !important;
 }
 
 [type="checkbox"]:checked+label::before {

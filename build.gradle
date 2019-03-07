@@ -36,6 +36,7 @@ dependencies {
     compile 'org.hibernate:hibernate-entitymanager:5.4.1.Final'
     compile 'org.apache.tomcat:tomcat-dbcp:9.0.16'
 
+
     runtime 'com.h2database:h2'
     runtime 'javax.transaction:jta:1.1'
     runtime 'org.aspectj:aspectjweaver:1.9.2'

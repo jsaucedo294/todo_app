@@ -6,14 +6,14 @@
     <div class="container">
         <ul style="margin-top: 50px">
             <li th:each="task : ${tasks}">
-                <form method="post" th:action="@{/mark}" class="inline todo-item">
-                    <input type="hidden" name="id" th:value="${task.id}"/>
-                    <input type="checkbox" th:id="|checked_${task.id}|" th:checked="${task.complete}"/>
-                    <label class="task-description" th:for="|checked_${task.id}|" th:text="${task.description}"></label>
-                    <label th:if="${task.dueDate}" class="due-date" style="font-size: 18px">
-                        ~ <small th:text="${#dates.format(task.dueDate, 'MM-DD-YYYY')}"></small>
+                <form method="post" th:action="@{/mark}" th:object="${task}" class="inline todo-item">
+                    <input type="hidden" name="id" th:value="*{id}"/>
+                    <input type="checkbox" th:id="|checked_*{id}|" th:checked="*{complete}"/>
+                    <label class="task-description" th:for="|checked_*{id}|" th:text="*{description}"></label>
+                    <label th:if="*{dueDate}" class="due-date" style="font-size: 20px">
+                        | Due: <small th:text="${#dates.format(task.dueDate, 'MMM d, yyyy')}"></small>
                     </label>
-                    <a href="#" th:href="@{/delete/} + ${task.id}"><img class="red-x" th:src="@{/assets/images/redX.png}" alt="delete"></a>
+                    <a href="#" th:href="@{/delete/} + *{id}"><img class="red-x" th:src="@{/assets/images/redX.png}" alt="delete"></a>
                 </form>
             </li>
             <li>
