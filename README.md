@@ -10,7 +10,7 @@ On terminal type:
 On terminal type:
 `git clone https://github.com/jsaucedo294/todo_app.git`
 3. Open project with Intellij
-Double click on `gradle.build` file
+Double click on `build.gradle` file
 4. Run Application
 Go to `src/main/java/com/jorgesaucedo/` and Run Application.java
 5. Open to browser
