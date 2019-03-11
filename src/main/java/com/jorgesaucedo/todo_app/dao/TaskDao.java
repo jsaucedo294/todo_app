@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-
+// Create a Dao Task (Data Access Object) that extends a CrudRepository
 @Repository
 public interface TaskDao extends CrudRepository<Task, Long> {
 }

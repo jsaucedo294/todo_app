@@ -18,6 +18,7 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+//Database Configuration File
 @Configuration
 @EnableJpaRepositories(basePackages = "com.jorgesaucedo.todo_app.dao")
 @PropertySource("application.properties")
@@ -25,6 +26,7 @@ public class DataConfig {
     @Autowired
     Environment env;
 
+    //LocalContainerEntityManagerFactoryBean Set up
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();

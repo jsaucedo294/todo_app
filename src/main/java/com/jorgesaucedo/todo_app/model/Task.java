@@ -14,19 +14,24 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class Task {
+    //Auto generated ID
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //Task Description
     private String description;
 
+    //boolean to know if it is Task complete?
     private boolean complete;
 
+    //Add a date when task is created
     @Temporal(TemporalType.DATE)
     @DateTimeFormat ( pattern="dd/mm/yyyy")
     @Column(name = "createAt")
     private Date createAt;
 
+    //Add a due date
     @Temporal(TemporalType.DATE)
     @DateTimeFormat ( pattern="yyyy-MM-dd")
     @Column(name = "dueDate")

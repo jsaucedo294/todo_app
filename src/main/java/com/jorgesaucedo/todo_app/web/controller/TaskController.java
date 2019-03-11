@@ -18,6 +18,7 @@ public class TaskController {
   @Autowired
   private TaskService taskService;
 
+  //Call list of Tasks
   @RequestMapping({"/", "/todo"})
   public String taskList(Model model) {
     Iterable<Task> tasks = taskService.findAll();
@@ -26,6 +27,7 @@ public class TaskController {
     return "todo_app";
   }
 
+  //Mark task as complete or incomplete
   @RequestMapping(path = "/mark", method = RequestMethod.POST)
   public String toggleComplete(@RequestParam Long id) {
     Task task = taskService.findOne(id);
@@ -33,6 +35,7 @@ public class TaskController {
     return "redirect:/";
   }
 
+  //Add a new task with createAt data and saves it.
   @RequestMapping(path = "/tasks", method = RequestMethod.POST)
   public String addTask(@ModelAttribute Task task) {
     task.setCreateAt(new Date());
@@ -40,6 +43,7 @@ public class TaskController {
     return "redirect:/";
   }
 
+  //Delete task when called
   @RequestMapping("/delete/{id}")
   public String deleteTask(@PathVariable Long id){
     Task task = taskService.findOne(id);
