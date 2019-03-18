@@ -5,7 +5,7 @@ Todo App can create new tasks and save them on a "h2" Database. This app is able
 ## Installation
 1. Create a Folder
 On terminal type:
-`mkdir "my directory" && cd $_` 
+`mkdir todo_app && cd todo_app` 
 2. Clone Repository
 On terminal type:
 `git clone https://github.com/jsaucedo294/todo_app.git`
@@ -13,7 +13,7 @@ On terminal type:
 Double click on `build.gradle` file
 4. Run Application
 Go to `src/main/java/com/jorgesaucedo/` and Run Application.java
-5. Open to browser
+5. Open your browser
 Type on search bar: `localhost:8080`
 
 
